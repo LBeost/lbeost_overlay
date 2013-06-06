@@ -6,6 +6,7 @@ EAPI="4"
 PHP_EXT_NAME="xcache"
 PHP_EXT_INI="yes"
 PHPSAPILIST="apache2 cgi fpm"
+S="${WORKDIR}/xcache-3.0.2-rc1"
 
 USE_PHP="php5-3 php5-4"
 inherit php-ext-source-r2 confutils
