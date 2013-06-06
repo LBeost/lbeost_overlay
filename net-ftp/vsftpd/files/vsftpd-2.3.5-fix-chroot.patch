@@ -1,0 +1,22 @@
+diff -ur vsftpd-2.3.5.orig//secutil.c vsftpd-2.3.5//secutil.c
+--- vsftpd-2.3.5.orig//secutil.c	2011-12-17 20:44:20.000000000 +0100
++++ vsftpd-2.3.5//secutil.c	2012-05-03 20:57:34.736436730 +0200
+@@ -132,12 +132,12 @@
+   /* Misconfiguration check: don't ever chroot() to a directory writable by
+    * the current user.
+    */
+-  if (options & VSF_SECUTIL_OPTION_CHROOT)
+-  {
+-    if (vsf_sysutil_write_access("/"))
+-    {
+-      die("vsftpd: refusing to run with writable root inside chroot()");
+-    }
+-  }
++  //if (options & VSF_SECUTIL_OPTION_CHROOT)
++  //{
++  //  if (vsf_sysutil_write_access("/"))
++  //  {
++  //    die("vsftpd: refusing to run with writable root inside chroot()");
++  //  }
++  //}
+ }
