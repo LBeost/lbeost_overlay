@@ -6,14 +6,16 @@ EAPI="4"
 PHP_EXT_NAME="xcache"
 PHP_EXT_INI="yes"
 PHPSAPILIST="apache2 cgi fpm"
-S="${WORKDIR}/xcache-3.0.2-rc1"
+PV="3.0.2-rc1"
+S="${WORKDIR}/${PN}-${PV}"
+
 
 USE_PHP="php5-3 php5-4"
 inherit php-ext-source-r2 confutils
 
 DESCRIPTION="A fast and stable PHP opcode cacher"
 HOMEPAGE="http://xcache.lighttpd.net/"
-SRC_URI="http://xcache.lighttpd.net/pub/Releases/${PV}-rc1/${P}-rc1.tar.bz2"
+SRC_URI="http://xcache.lighttpd.net/pub/Releases/${PV}/${PN}-${PV}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
