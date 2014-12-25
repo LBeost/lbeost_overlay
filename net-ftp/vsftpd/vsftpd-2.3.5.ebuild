@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2013 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/vsftpd-2.3.5.ebuild,v 1.7 2012/04/17 19:45:00 ranger Exp $
+# $Header: /var/cvsroot/gentoo-x86/net-ftp/vsftpd/vsftpd-2.3.5.ebuild,v 1.10 2013/04/27 09:45:08 hwoarang Exp $
 
 EAPI="4"
 
@@ -12,7 +12,7 @@ SRC_URI="http://security.appspot.com/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~hppa ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
 IUSE="caps pam tcpd ssl selinux xinetd"
 
 DEPEND="caps? ( >=sys-libs/libcap-2 )
@@ -21,7 +21,7 @@ DEPEND="caps? ( >=sys-libs/libcap-2 )
 	ssl? ( >=dev-libs/openssl-0.9.7d )"
 RDEPEND="${DEPEND}
 	net-ftp/ftpbase
-	selinux? ( sec-policy/selinux-ftpd )
+	selinux? ( sec-policy/selinux-ftp )
 	xinetd? ( sys-apps/xinetd )"
 
 src_prepare() {
@@ -92,6 +92,9 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}.init" ${PN}
 
 	keepdir /usr/share/${PN}/empty
+
+	exeinto /usr/libexec
+	doexe "${FILESDIR}/vsftpd-checkconfig.sh"
 }
 
 pkg_preinst() {
@@ -113,5 +116,7 @@ pkg_postinst() {
 	einfo "   ln -s vsftpd vsftpd.foo"
 	einfo "You can now treat vsftpd.foo like any other service"
 	einfo
-	einfo "This build is patched by Yuu - To support non read-only chroots"
+	einfo "Note:"
+	einfo "This ebuild is patched in order to support non read-only chroots."
 }
+

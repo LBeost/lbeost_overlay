@@ -119,5 +119,6 @@ pkg_postinst() {
 	einfo "   ln -s vsftpd vsftpd.foo"
 	einfo "You can now treat vsftpd.foo like any other service"
 	einfo
-	einfo "This build is patched by Yuu - To support non read-only chroots"
+	einfo "Note:"
+	einfo "This ebuild is patched in order to support non read-only chroots."
 }
